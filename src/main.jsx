@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename='/spacescutum/'>
+    <BrowserRouter basename='/spacescutum/'> 
       <App />
     </BrowserRouter>
   </React.StrictMode>,
