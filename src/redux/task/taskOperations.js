@@ -14,7 +14,6 @@ export const fetchTasks = createAsyncThunk('tasks/fetchAll', async (_, thunkApi)
 		const { data } = await instance.get('/todos?limit=0');
 		return data;
 	} catch (error) {
-		// console.error(error);
 		toast.error('Connection failed, please try again');
 
 		return thunkApi.rejectWithValue(error.message);
@@ -30,7 +29,6 @@ export const addTask = createAsyncThunk('tasks/addTask', async (todo, thunkApi) 
 
 		return data;
 	} catch (error) {
-		// console.error(error);
 		toast.error('Connection failed, please try again');
 
 		return thunkApi.rejectWithValue(error.message);
@@ -43,7 +41,6 @@ export const deleteTask = createAsyncThunk('tasks/deleteTask', async (todoId, th
 		toast.success('Todo deleted!');
 		return data;
 	} catch (error) {
-		// console.error(error);
 		// Fake API not delete custom Todo from database, so we imitate a success result
 		if (error.response.status === 404) {
 			toast.success('Todo deleted!');
@@ -63,7 +60,6 @@ export const toggleCompleted = createAsyncThunk('tasks/toggleCompleted', async (
 		toast.success('Congratulations! Todo completed!');
 		return data;
 	} catch (error) {
-		// console.error(error);
 		// Fake API not add custom Todo to database, so we imitate a success result
 		if (error.response.status === 404) {
 			toast.success('Congratulations! Todo completed!');
