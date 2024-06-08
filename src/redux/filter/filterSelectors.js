@@ -3,8 +3,8 @@ import { selectTasks } from '../task/taskSelectors';
 
 export const selectStatusFilter = state => state.filter.status;
 
-export const selectTasksCount = createSelector([selectTasks], allTodos => {
-	return allTodos.reduce(
+export const selectTasksCount = createSelector([selectTasks], allTasks => {
+	return allTasks.reduce(
 		(count, todo) => {
 			if (todo.completed) {
 				count.completed += 1;
@@ -17,12 +17,12 @@ export const selectTasksCount = createSelector([selectTasks], allTodos => {
 	);
 });
 
-export const selectVisibleTasks = createSelector([selectTasks, selectStatusFilter], (allTodos, filterStatus) => {
+export const selectVisibleTasks = createSelector([selectTasks, selectStatusFilter], (allTasks, filterStatus) => {
 	if (filterStatus === 'active') {
-		return allTodos.filter(todo => !todo.completed);
+		return allTasks.filter(todo => !todo.completed);
 	} else if (filterStatus === 'completed') {
-		return allTodos.filter(todo => todo.completed);
+		return allTasks.filter(todo => todo.completed);
 	} else {
-		return allTodos;
+		return allTasks;
 	}
 });

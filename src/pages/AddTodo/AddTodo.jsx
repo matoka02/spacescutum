@@ -17,7 +17,9 @@ const AddTodo = () => {
 		const data = new FormData(evt.currentTarget);
 		const todoText = data.get('todo');
 
-		if (todoText.trim() === '') return toast.error('Please fill todo');
+		if (todoText.trim() === '') { 
+			return toast.error('Please fill todo'); 
+		}
 
 		const newTodo = {
 			todo: todoText.trim(),

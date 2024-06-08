@@ -1,5 +1,5 @@
 export const tasksInitialState = {
-	allTodos: [],
+	allTasks: [],
 	isLoading: false,
   error: null,
 };

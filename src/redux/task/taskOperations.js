@@ -9,19 +9,19 @@ const instance = axios.create({
 	baseURL: BASE_URL,
 });
 
-export const fetchTasks = createAsyncThunk('todos/fetchAll', async (_, thunkApi) => {
+export const fetchTasks = createAsyncThunk('tasks/fetchAll', async (_, thunkApi) => {
 	try {
 		const { data } = await instance.get('/todos?limit=0');
 		return data;
 	} catch (error) {
-		console.log(error);
+		// console.error(error);
 		toast.error('Connection failed, please try again');
 
 		return thunkApi.rejectWithValue(error.message);
 	}
 });
 
-export const addTask = createAsyncThunk('todos/addTask', async (todo, thunkApi) => {
+export const addTask = createAsyncThunk('tasks/addTask', async (todo, thunkApi) => {
 	try {
 		const { data } = await instance.post('/todos/add', todo);
 		toast.success('New Todo added!');
@@ -30,20 +30,20 @@ export const addTask = createAsyncThunk('todos/addTask', async (todo, thunkApi) 
 
 		return data;
 	} catch (error) {
-		console.log(error);
+		// console.error(error);
 		toast.error('Connection failed, please try again');
 
 		return thunkApi.rejectWithValue(error.message);
 	}
 });
 
-export const deleteTask = createAsyncThunk('todos/deleteTask', async (todoId, thunkApi) => {
+export const deleteTask = createAsyncThunk('tasks/deleteTask', async (todoId, thunkApi) => {
 	try {
 		const { data } = await instance.delete(`/todos/${todoId}`);
 		toast.success('Todo deleted!');
 		return data;
 	} catch (error) {
-		console.log(error);
+		// console.error(error);
 		// Fake API not delete custom Todo from database, so we imitate a success result
 		if (error.response.status === 404) {
 			toast.success('Todo deleted!');
@@ -55,7 +55,7 @@ export const deleteTask = createAsyncThunk('todos/deleteTask', async (todoId, th
 	}
 });
 
-export const toggleCompleted = createAsyncThunk('todos/toggleCompleted', async (todoId, thunkApi) => {
+export const toggleCompleted = createAsyncThunk('tasks/toggleCompleted', async (todoId, thunkApi) => {
 	try {
 		const { data } = await instance.put(`/todos/${todoId}`, {
 			completed: true,
@@ -63,7 +63,7 @@ export const toggleCompleted = createAsyncThunk('todos/toggleCompleted', async (
 		toast.success('Congratulations! Todo completed!');
 		return data;
 	} catch (error) {
-		console.log(error);
+		// console.error(error);
 		// Fake API not add custom Todo to database, so we imitate a success result
 		if (error.response.status === 404) {
 			toast.success('Congratulations! Todo completed!');

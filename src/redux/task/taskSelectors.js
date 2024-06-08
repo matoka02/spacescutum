@@ -1,4 +1,4 @@
-export const selectTasks = state => state.todos.allTodos;
+export const selectTasks = state => state.todos.allTasks;
 
 export const selectIsLoading = state => state.todos.isLoading;
 

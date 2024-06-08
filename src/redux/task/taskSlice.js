@@ -12,34 +12,34 @@ const taskSlice = createSlice({
 				state.isLoading = true;
 			})
 			.addCase(fetchTasks.fulfilled, (state, { payload }) => {
-				state.allTodos = payload.todos;
+				state.allTasks = payload.todos;
 				state.isLoading = false;
 			})
 			.addCase(fetchTasks.rejected, state => {
-				state.allTodos = null;
+				state.allTasks = null;
 				state.isLoading = false;
 			})
 			.addCase(toggleCompleted.fulfilled, (state, { payload }) => {
-				const index = state.allTodos.findIndex(todo => todo.id === payload.id);
-				state.allTodos.splice(index, 1, payload);
+				const index = state.allTasks.findIndex(todo => todo.id === payload.id);
+				state.allTasks.splice(index, 1, payload);
 			})
 			.addCase(toggleCompleted.rejected, (state, { payload }) => {
 				// Fake API not add custom Todo to database, so we imitate a success result
-				const index = state.allTodos.findIndex(todo => todo.id === payload);
-				const todo = state.allTodos.find(todo => todo.id === payload);
+				const index = state.allTasks.findIndex(todo => todo.id === payload);
+				const todo = state.allTasks.find(todo => todo.id === payload);
 				todo.completed = true;
-				state.allTodos.splice(index, 1, todo);
+				state.allTasks.splice(index, 1, todo);
 			})
 			.addCase(addTask.fulfilled, (state, { payload }) => {
-				state.allTodos.push(payload);
+				state.allTasks.push(payload);
 			})
 			.addCase(deleteTask.fulfilled, (state, { payload }) => {
-				const index = state.allTodos.findIndex(todo => todo.id === payload.id);
-				state.allTodos.splice(index, 1);
+				const index = state.allTasks.findIndex(todo => todo.id === payload.id);
+				state.allTasks.splice(index, 1);
 			})
 			.addCase(deleteTask.rejected, (state, { payload }) => {
-				const index = state.allTodos.findIndex(todo => todo.id === payload);
-				state.allTodos.splice(index, 1);
+				const index = state.allTasks.findIndex(todo => todo.id === payload);
+				state.allTasks.splice(index, 1);
 			});
 	},
 });
