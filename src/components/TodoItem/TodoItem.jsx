@@ -2,6 +2,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const TodoItem = ({ todo, onDelete, onComplete }) => {
 	return (
@@ -23,7 +24,7 @@ const TodoItem = ({ todo, onDelete, onComplete }) => {
 					aria-label='delete'
 					onClick={() => onDelete(todo.id)}
 				>
-					XXX
+					<DeleteIcon/>
 				</IconButton>
 			)}
 

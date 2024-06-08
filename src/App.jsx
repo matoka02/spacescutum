@@ -28,15 +28,15 @@ const App = () => {
       </Routes>
 
       <Toaster 
-      position='top-center' 
-      reverseOrder={false}
-      toastOptions={{
-        duration:4000,
-        style: {
-          background: '#333',
-          color: '#fff'
-        }
-      }}
+        position='top-center' 
+        reverseOrder={false}
+        toastOptions={{
+          duration:4000,
+          style: {
+            background: '#7575ff',
+            color: '#ffffff'
+          }
+        }}
       />
     </>
   )
